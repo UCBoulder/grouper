@@ -2321,7 +2321,8 @@ public class GrouperUtil {
     
     // searchBase is member DN minus suffix (domainSuffix) minus trailing comma
     // This has to be done since LdapSession.list appends LDAP suffix to search base values
-    String searchBase = StringUtils.chop(StringUtils.removeEnd(dn.toLowerCase(),domainSuffix.toLowerCase()));
+    //String searchBase = StringUtils.chop(StringUtils.removeEnd(dn.toLowerCase(),domainSuffix.toLowerCase()));
+    String searchBase = dn;
     
     // Forward slash is a special character in JNDI. In case the dn contains one, this addresses it.
     // This may no longer be needed with patched versions of grouper. 
