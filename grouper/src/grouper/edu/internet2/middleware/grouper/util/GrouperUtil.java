@@ -2374,7 +2374,7 @@ public class GrouperUtil {
     
       if (isGroup) {
         LOG.debug("MARWAN: DN: " + dn + "Is a group");
-        System.out.println("SHAHER: DN: " + dn + "Is a group")
+        System.out.println("SHAHER: DN: " + dn + "Is a group");
       // Check that the member object is within the baseOu space
       if ( dn.toLowerCase().indexOf(baseOu.toLowerCase()) > 0 ) {
         // convert the DN to a grouper group
@@ -2382,7 +2382,7 @@ public class GrouperUtil {
 	System.out.println("SHAHER: converting " + dn + " to a groupName");
         String groupName = ldapConvertDnToGroupName(dn, baseOu, grouperBaseStem); 
 	LOG.debug("MARWAN: converted " + dn + " to a groupName " + groupName);
-	System.out.println("MARWAN: converted " + dn + " to a groupName " + groupName);
+	System.out.println("SHAHER: converted " + dn + " to a groupName " + groupName);
       
         // see if the group exists
         Group group = GrouperDAOFactory.getFactory().getGroup().findByName(groupName, false, null) ;
