@@ -2317,7 +2317,7 @@ public class GrouperUtil {
     // get the domain suffix, RDN attribute and RDN value from the DN
     String domainSuffix = dn.substring(dn.toLowerCase().indexOf("dc="));
     String rdnAttribute = StringUtils.substringBefore(dn,"=");
-    String rdnValue = ldapConvertDnToSpecificValue(dn);
+    String rdnValue = FilterUtils.escape(ldapConvertDnToSpecificValue(dn));
     
     // searchBase is member DN minus suffix (domainSuffix) minus trailing comma
     // This has to be done since LdapSession.list appends LDAP suffix to search base values
