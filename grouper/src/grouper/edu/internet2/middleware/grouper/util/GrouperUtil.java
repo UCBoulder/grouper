@@ -2310,8 +2310,6 @@ public class GrouperUtil {
       return dn;
     }
   
-    LOG.debug("MARWAN: Start conversion of DN '" + dn + "'");
-    System.out.println("SHAHER: Start conversion of DN '" + dn + "'");
     if (LOG.isDebugEnabled()) {
       LOG.debug("Start conversion of DN '" + dn + "'");
     }
@@ -2357,8 +2355,6 @@ public class GrouperUtil {
 
     // if it is a person AND has uniqueAttribute, return the rdn
     if (isPerson) {
-      LOG.debug("MARWAN: DN: '" + dn + "' converted to RDN '" + rdnValue + "'");
-      System.out.println("SHAHER: DN: '" + dn + "' converted to RDN '" + rdnValue + "'");
       if (LOG.isDebugEnabled()) {
         LOG.debug("DN: '" + dn + "' converted to RDN '" + rdnValue + "'");
       }      
@@ -2373,22 +2369,14 @@ public class GrouperUtil {
       Boolean isGroup = new Boolean(groupresults.size() > 0);
     
       if (isGroup) {
-        LOG.debug("MARWAN: DN: " + dn + "Is a group");
-        System.out.println("SHAHER: DN: " + dn + "Is a group");
       // Check that the member object is within the baseOu space
       if ( dn.toLowerCase().indexOf(baseOu.toLowerCase()) > 0 ) {
         // convert the DN to a grouper group
-	LOG.debug("MARWAN: converting " + dn + " to a groupName");
-	System.out.println("SHAHER: converting " + dn + " to a groupName");
         String groupName = ldapConvertDnToGroupName(dn, baseOu, grouperBaseStem); 
-	LOG.debug("MARWAN: converted " + dn + " to a groupName " + groupName);
-	System.out.println("SHAHER: converted " + dn + " to a groupName " + groupName);
       
         // see if the group exists
         Group group = GrouperDAOFactory.getFactory().getGroup().findByName(groupName, false, null) ;
         if (group == null) {
-          LOG.debug("MARWAN: Group doesnt exist, creating: '" + groupName +"'");
-          System.out.println("SHAHER: Group doesnt exist, creating: '" + groupName +"'");
           if (LOG.isDebugEnabled()) {
             LOG.debug("Group doesnt exist, creating: '" + groupName +"'");
           }
@@ -2401,8 +2389,6 @@ public class GrouperUtil {
         }
   
         // return the ID of the group
-        LOG.debug("MARWAN DN: '" + dn + "' converted to group: '" + group.getName() + "' and id: '" + group.getId() + "'");
-        System.out.println("SHAHER DN: '" + dn + "' converted to group: '" + group.getName() + "' and id: '" + group.getId() + "'");
         if (LOG.isDebugEnabled()) {
           LOG.debug("DN: '" + dn + "' converted to group: '" + group.getName() + "' and id: '" + group.getId() + "'");
         }
